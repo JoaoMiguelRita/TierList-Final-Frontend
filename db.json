@@ -1,3 +1,16 @@
 {
-  "tierList": []
+  "tierList": [
+    {
+      "id": "abc1234",
+      "name": "Tier de test 123",
+      "type": "default",
+      "created_date": "2023-06-01T12:00:00Z",
+      "aqui_vao_as_coisas_do_tier": [
+        {
+          "id": "abc12346u123wqds",
+          "name_item": "Item de test"
+        }
+      ]
+    }
+  ]
 }

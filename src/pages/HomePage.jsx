@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4} from 'uuid';
 import axios from 'axios';
-import TierHome from '../components/TierHome';
+import TierListHome from '../components/TierListHome';
 
 export default function HomePage() {
     const [tierList, setTierList] = useState([]);
@@ -12,7 +12,7 @@ export default function HomePage() {
             setTierList(response.data)
         }
         )
-    }, [TierHome]);
+    }, [TierListHome]);
 
     const handleAddTier = (newTier) => {
         newTier.id = uuidv4()
@@ -23,20 +23,21 @@ export default function HomePage() {
         axios.delete(`http://localhost:3000/tierList/${id}`)
     };
 
-    const handleConcluirTier = (id) => {
-        axios.patch(`http://localhost:3000/tierList/${id}`, {concluido: true})
-    };
-
     const handleEditarTier = (id, newTier) => {
         axios.patch(`http://localhost:3000/tierList/${id}`, newTier)
     };
 
     return (
         <div className="min-h-200 bg-gray-800 px-60 p-8">
-            <div className="max-w-xl mx-auto bg-gray-500 rounded-xl shadow-lg p-6">
-            <h1 className="text-2xl font-bold text-center mb-6">📝 Tier List</h1>
-            <p className="text-white-700">teste</p>
-            </div>
+            <button className="max-w-xl mx-auto bg-gray-600 hover:bg-gray-500 transition-colors rounded-xl shadow-lg p-6">    
+                <h1 className="text-lg font-bold text-center m-auto">Nova Tier-List</h1>
+            </button>
+
+            <TierListHome
+                tierList={tierList}
+                onDelete={handleDeleteTier}
+                onEdit={handleEditarTier}
+            />
         </div>
     );
 }
