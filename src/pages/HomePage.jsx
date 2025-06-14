@@ -32,10 +32,10 @@ export default function HomePage() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 p-8">
-            <div className="max-w-xl mx-auto bg-white rounded-xl shadow-lg p-6">
+        <div className="min-h-200 bg-gray-800 px-60 p-8">
+            <div className="max-w-xl mx-auto bg-gray-500 rounded-xl shadow-lg p-6">
             <h1 className="text-2xl font-bold text-center mb-6">📝 Tier List</h1>
-            <p className="text-gray-700">teste</p>
+            <p className="text-white-700">teste</p>
             </div>
         </div>
     );

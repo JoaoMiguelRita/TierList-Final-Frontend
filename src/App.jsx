@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import './App.css'
 import HomePage from "./pages/HomePage";
 import DefaultLayout from "./layout/DefaultLayout";
 import SobrePage from "./pages/SobrePage";
