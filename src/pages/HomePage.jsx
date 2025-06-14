@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4} from 'uuid';
 import axios from 'axios';
+import TierHome from '../components/TierHome';
 
 export default function HomePage() {
     const [tierList, setTierList] = useState([]);
@@ -11,7 +12,7 @@ export default function HomePage() {
             setTierList(response.data)
         }
         )
-    }, [TierList]);
+    }, [TierHome]);
 
     const handleAddTier = (newTier) => {
         newTier.id = uuidv4()
