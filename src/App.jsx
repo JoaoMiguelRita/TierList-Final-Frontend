@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import DefaultLayout from "./layout/DefaultLayout";
 import SobrePage from "./pages/SobrePage";
 import TierForm from "./components/TierFormHome";
+import TierList from "./pages/TierListPage";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/form",
         element: <TierForm />,
+      },
+      {
+        path: "/tierList/:id",
+        element: <TierList />,
       },
       {
         path: "/sobre",

@@ -1,8 +1,8 @@
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 export default function TierItemHome({ tier, onDelete, onEdit }) {
   const handleNavClick = () => {
-    Navigate(`/tier/${tier.id}`);
+    Navigate(`/tierList/${tier.id}`);
   }
 
   const handleEdit = (e) => {
@@ -14,9 +14,9 @@ export default function TierItemHome({ tier, onDelete, onEdit }) {
   };
 
   return (
-    <div 
+    <Link 
         className="flex flex-col border p-4 rounded hover:bg-gray-500 shadow-snpm bg-gray-600"
-        onClick={handleNavClick}
+        to={`/tierList/${tier.id}`}
     >
       <p
         id="name"
@@ -50,6 +50,6 @@ export default function TierItemHome({ tier, onDelete, onEdit }) {
           Deletar
         </button>
       </div>
-    </div>
+    </Link>
   );
 }

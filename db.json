@@ -1,11 +1,6 @@
 {
   "tierList": [
     {
-      "id": "123125412 124",
-      "name": "teste 1",
-      "type": "default"
-    },
-    {
       "id": "2451215124",
       "name": "teste 3",
       "type": "default"
@@ -43,6 +38,11 @@
     {
       "id": "60a84868-9ccb-4c5b-bf29-a6c48532295c",
       "name": "Animais",
+      "type": "default"
+    },
+    {
+      "id": "1050d1b4-d383-4f29-96e9-c9ff7df215a2",
+      "name": "aaaa",
       "type": "default"
     }
   ]
