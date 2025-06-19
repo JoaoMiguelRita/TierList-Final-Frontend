@@ -1,27 +1,55 @@
-import TierEditableText from "./TierEditableText"
+import { Navigate } from "react-router-dom";
 
-export default function TierItemHome({tier, onDelete, onEdit}) {
-    const handleEdit = (atributo, novoValor) => {
-        onEdit(tier.id, { [atributo]: novoValor })
+export default function TierItemHome({ tier, onDelete, onEdit }) {
+  const handleNavClick = () => {
+    Navigate(`/tier/${tier.id}`);
+  }
+
+  const handleEdit = (e) => {
+    e.stopPropagation(); // evita navegação
+    const newName = prompt("Digite o novo nome da TierList:", tier.name);
+    if (newName && newName.trim() !== "") {
+      onEdit(tier.id, { name: newName.trim() });
     }
+  };
 
-    return (
-        <div className="flex flex-col border p-4 rounded shadow-sm bg-gray-600">
-            <TierEditableText
-            id="name"
-            l_text={tier.name}
-            onEdit={(value) => handleEdit("name", value)}
-            />
-            <TierEditableText
-            id="type"
-            l_text={tier.type}
-            onEdit={(value) => handleEdit("type", value)}
-            />
-            <div className="flex justify-between mt-2">
-                <button onClick={() => onDelete(tier.id)} className="text-red-600 hover:underline">
-                    Deletar
-                </button>
-            </div>
-        </div>
-        )
+  return (
+    <div 
+        className="flex flex-col border p-4 rounded hover:bg-gray-500 shadow-snpm bg-gray-600"
+        onClick={handleNavClick}
+    >
+      <p
+        id="name"
+        className="cursor-pointer rounded px-1"
+      >
+        {tier.name}
+      </p>
+      <p
+        id="type"
+        className="cursor-pointer rounded px-1"
+      >
+        {tier.type}
+      </p>
+      <div className="flex justify-between mt-2">
+        <button
+          className="text-red-600 hover:underline"
+          onClick={(e) => {
+            e.stopPropagation(); // evita navegação ao clicar no botão
+            
+          }}
+        >
+          Editar
+        </button>
+        <button
+          className="text-red-600 hover:underline"
+          onClick={(e) => {
+            e.stopPropagation(); // evita navegação ao clicar no botão
+            onDelete(tier.id);
+          }}
+        >
+          Deletar
+        </button>
+      </div>
+    </div>
+  );
 }

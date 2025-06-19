@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import DefaultLayout from "./layout/DefaultLayout";
 import SobrePage from "./pages/SobrePage";
+import TierForm from "./components/TierFormHome";
 
 const router = createBrowserRouter([
   {
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path: "/form",
+        element: <TierForm />,
       },
       {
         path: "/sobre",

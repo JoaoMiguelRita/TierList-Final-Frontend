@@ -1,16 +1,49 @@
 {
   "tierList": [
     {
-      "id": "abc1234",
-      "name": "Tier de test 123",
-      "type": "default",
-      "created_date": "2023-06-01T12:00:00Z",
-      "aqui_vao_as_coisas_do_tier": [
-        {
-          "id": "abc12346u123wqds",
-          "name_item": "Item de test"
-        }
-      ]
+      "id": "123125412 124",
+      "name": "teste 1",
+      "type": "default"
+    },
+    {
+      "id": "2451215124",
+      "name": "teste 3",
+      "type": "default"
+    },
+    {
+      "id": "323",
+      "name": "teste123",
+      "type": "default"
+    },
+    {
+      "id": "e0a21481-2490-4353-a9ca-dd8f8424f13e",
+      "name": "Animais",
+      "type": ""
+    },
+    {
+      "id": "6b15a413-2ae4-4f85-bb0d-fe90a3235e22",
+      "name": "Animais",
+      "type": "default"
+    },
+    {
+      "id": "2e916a75-7557-4ab7-9a2f-9c633a010e53",
+      "name": "Animais",
+      "type": "default"
+    },
+    {
+      "id": "f21c3125-1fd6-49f0-9fc9-ebc91565ae95",
+      "name": "Animais",
+      "type": "default"
+    },
+    {
+      "id": "68a6ed36-3da5-4c29-a74e-96256dac9972",
+      "name": "teste 123",
+      "type": "default"
+    },
+    {
+      "id": "60a84868-9ccb-4c5b-bf29-a6c48532295c",
+      "name": "Animais",
+      "type": "default"
     }
   ]
 }
