@@ -10,6 +10,8 @@ export default function TierForm({ initialData = {}}) {
         ...initialData,
     })
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -30,7 +32,7 @@ export default function TierForm({ initialData = {}}) {
             });
             navigate('/'); // Redireciona para a HomePage depois de salvar
             } catch (error) {
-            console.error("Erro ao adicionar TierList:", error);
+            console.log("Erro ao adicionar TierList:", error?.message, error?.response);
             alert("Houve um erro ao adicionar a TierList. Tente novamente.");
         }
     }
