@@ -1,5 +1,58 @@
-export default function TierBoard() {
-    
+import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
+
+function DraggableItem({ item }) {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    id: item.id_item,
+  });
+
+  const style = {
+    transform: transform
+    ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
+    : undefined,
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...listeners}
+      {...attributes}
+      className="p-2 rounded bg-gray-500 text-white cursor-move shadow"
+    >
+      {item.name_item}
+    </div>
+  );
+}
+
+function DroppableRow({ tier, children }) {
+  const { setNodeRef, isOver } = useDroppable({
+    id: tier,
+  });
+
+  return (
+    <div
+      ref={setNodeRef}
+      className={`flex-1 flex gap-2 p-4 flex-wrap transition-colors duration-300 ${
+        isOver ? "bg-green-800" : "bg-gray-800"
+      } min-h-[80px]`}
+    >
+      {children}
+    </div>
+  );
+}
+
+export default function TierBoard({ items = [], onItemDrop, onEdit }) {
+  const levels = ["S", "A", "B", "C", "D"];
+
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+    if (over && active.id !== over.id) {
+      const draggedItemId = active.id;
+      const newTier = over.id;
+      onItemDrop(draggedItemId, newTier);
+    }
+  };
+
   function corNivel(nivel) {
     switch (nivel) {
       case "S":
@@ -20,9 +73,12 @@ export default function TierBoard() {
   return (
     <>
       <div className="flex flex-col gap-4 max-w-6xl mx-auto">
-        {["S", "A", "B", "C", "D"].map((nivel, index) => (
-          <div key={nivel} className="flex items-center border border-gray-700">
-            {/* Coluna da letra */}
+        {levels.map((nivel) => (
+          <div
+            key={nivel}
+            className="flex items-center border border-gray-700"
+          >
+            {/* Nivel da Tier */}
             <div
               className={`w-16 h-full flex items-center justify-center font-bold text-xl ${corNivel(
                 nivel
@@ -31,17 +87,23 @@ export default function TierBoard() {
               {nivel}
             </div>
 
-            {/* Container dos itens */}
-            <div className="flex-1 flex gap-2 p-4 bg-gray-800 min-h-[80px] flex-wrap">
-              {/* Aqui serão renderizados os cards dos itens classificados */}
-              <p className="text-gray-500 italic">Sem itens</p>
-            </div>
+            {/* Área de drop */}
+            <DroppableRow tier={nivel}>
+              {items
+                .filter((item) => item.tier === nivel)
+                .map((item) => (
+                  <DraggableItem 
+                    key={item.id_item} 
+                    item={item}
+                    onEdit={onEdit}  
+                  />
+                ))}
+            </DroppableRow>
 
-            {/* Controles de linha */}
-            <div className="flex flex-col gap-4 px-4 py-2 bg-gray-700">
+            {/* Controles (opcional) */}
+            <div className="flex flex-col gap-2 px-4 py-2 bg-gray-700">
               <button title="Mover para cima">⬆️</button>
               <button title="Mover para baixo">⬇️</button>
-              {/*<button title="Configurar nível">⚙️</button>*/}
             </div>
           </div>
         ))}

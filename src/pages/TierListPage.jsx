@@ -1,49 +1,102 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { DndContext } from "@dnd-kit/core";
+
 import TierForm from "../components/tierList/TierForm";
 import TierBoard from "../components/tierList/TierBoard";
-import TierListTable from "../components/tierList/TierListTable"; // Sugiro renomear para UnclassifiedItemsTable.jsx
+import UndefinedItemsList from "../components/tierList/UndefinedItemsList";
+import TierTrash from "../components/tierList/dnd/TierTrash";
 
 export default function TierListPage() {
-  const { id } = useParams(); // Pega o ID da Tier List da URL
-  
-  // O estado deve ser para UMA Tier List, não um array de Tier Lists
-  const [currentTierList, setCurrentTierList] = useState(null); 
+  const { id } = useParams();
+  const [currentTierList, setCurrentTierList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); // Prevenção de erros
 
   useEffect(() => {
     const fetchTierList = async () => {
+      setLoading(true);
+      setError(null);
       try {
-        // Busque APENAS A TIER LIST COM O ID ESPECÍFICO
-        const response = await axios.get(`http://localhost:3000/tierList/${id}`);
-        setCurrentTierList(response.data); // Define o objeto da Tier List no estado
+        const response = await axios.get(
+          `http://localhost:3000/tierList/${id}`
+        );
+        setCurrentTierList(response.data);
       } catch (err) {
         console.error("Erro ao carregar a Tier List:", err);
-        setError("Não foi possível carregar a Tier List. Por favor, tente novamente.");
+        setError(
+          "Não foi possível carregar a Tier List. Por favor, tente novamente."
+        );
       } finally {
         setLoading(false);
       }
     };
 
-    if (id) { // Só busca se tiver um ID na URL
+    if (id) {
       fetchTierList();
     }
-  }, [id]); // O useEffect deve depender do 'id' da URL para recarregar quando a rota muda
+  }, [id]);
 
-  // Funções de manipulação de ITENS (dentro desta Tier List específica)
+  // Função para lidar com o drop de ITENS (seja ele, do table para o board ou para a lixeira, ou até mesmo fora de um campo válido)
+  const handleItemDrop = async (event) => {
+    const { active, over } = event;
+
+    // Se o item foi solto em um lugar válido (over existe e não é o próprio item)
+    if (!over || active.id === over.id) {
+      // Adicionado !over para garantir que foi solto em um local válido
+      return;
+    }
+
+    const draggedItemId = active.id;
+    const droppedZoneId = over.id;
+
+    // Lógica da Lixeira
+    if (droppedZoneId === "trash") {
+      // Se soltou na lixeira, chame a função de exclusão
+      handleDeleteItem(draggedItemId);
+      return;
+    }
+
+    // Lógica para Mover para Cards/Items
+    const draggedItem = currentTierList.items.find(
+      (item) => item.id_item === draggedItemId
+    );
+
+    if (!draggedItem) return; // Se o item não for encontrado, sai
+
+    const updatedItems = currentTierList.items.map(
+      (item) =>
+        item.id_item === draggedItemId ? { ...item, tier: droppedZoneId } : item // Use 'droppedZoneId' como nova tier
+    );
+
+    try {
+      await axios.patch(`http://localhost:3000/tierList/${id}`, {
+        items: updatedItems,
+      });
+      setCurrentTierList((prev) => ({
+        ...prev,
+        items: updatedItems,
+      }));
+    } catch (err) {
+      console.error("Erro ao atualizar tier do item:", err);
+      alert("Erro ao mover item para outro nível.");
+    }
+  };
+
   const handleEditarItem = async (id_item, newItemData) => {
-    if (!currentTierList) return; // Garante que a Tier List está carregada
+    if (!currentTierList || !currentTierList.items) return;
 
-    const updatedItems = currentTierList.items.map(item =>
+    const updatedItems = currentTierList.items.map((item) =>
       item.id_item === id_item ? { ...item, ...newItemData } : item
     );
 
     try {
-      // Atualiza a Tier List completa com os itens modificados no backend
-      const response = await axios.patch(`http://localhost:3000/tierList/${id}`, { items: updatedItems });
-      setCurrentTierList(response.data); // Atualiza o estado local com os dados mais recentes
+      const response = await axios.patch(
+        `http://localhost:3000/tierList/${id}`,
+        { items: updatedItems }
+      );
+      setCurrentTierList(response.data);
       alert("Item editado com sucesso!");
     } catch (err) {
       console.error("Erro ao editar item:", err);
@@ -52,17 +105,20 @@ export default function TierListPage() {
   };
 
   const handleDeleteItem = async (id_item) => {
-    if (!currentTierList) return; // Garante que a Tier List está carregada
+    if (!currentTierList || !currentTierList.items) return;
 
     if (window.confirm("Deseja mesmo deletar este Item?")) {
-      const updatedItems = currentTierList.items.filter(item => item.id_item !== id_item);
+      const updatedItems = currentTierList.items.filter(
+        (item) => item.id_item !== id_item
+      );
 
       try {
-        // Atualiza a Tier List completa removendo o item no backend
-        await axios.patch(`http://localhost:3000/tierList/${id}`, { items: updatedItems });
-        setCurrentTierList(prevData => ({
+        await axios.patch(`http://localhost:3000/tierList/${id}`, {
+          items: updatedItems,
+        });
+        setCurrentTierList((prevData) => ({
           ...prevData,
-          items: updatedItems // Atualiza o estado local
+          items: updatedItems,
         }));
         alert("Item deletado com sucesso!");
       } catch (error) {
@@ -72,33 +128,48 @@ export default function TierListPage() {
     }
   };
 
-  // --- Condições de Carregamento e Erro ---
+  // Condições para renderizar a página e prever erros
   if (loading) {
-    return <p className="text-center text-white mt-10">Carregando Tier List...</p>;
+    return (
+      <p className="text-center text-white mt-10">Carregando Tier List...</p>
+    );
   }
-
   if (error) {
     return <p className="text-center text-red-500 mt-10">{error}</p>;
   }
-
-  // Se a tierList não for encontrada após o carregamento
   if (!currentTierList) {
-    return <p className="text-center text-white mt-10">Tier List não encontrada.</p>;
+    return (
+      <p className="text-center text-white mt-10">Tier List não encontrada.</p>
+    );
   }
 
-  // Extraia os itens não classificados (assumindo que todos os 'items' são não classificados por enquanto)
-  const unclassifiedItems = currentTierList.items || []; // Garante que seja um array, mesmo se 'items' for nulo/indefinido
+  // Filtra os itens com base na propriedade 'tier'
+  const itemsInTiers =
+    currentTierList.items?.filter((item) => item.tier !== "?") || [];
+  const unclassifiedItems =
+    currentTierList.items?.filter((item) => item.tier === "?") || [];
 
   return (
     <div className="min-h-screen bg-gray-900 text-white px-6 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-center">{currentTierList.name}</h1>
-      <TierBoard />
-      <TierForm /> 
-      <TierListTable
-        items={unclassifiedItems}
-        onEdit={handleEditarItem}
-        onDelete={handleDeleteItem}
-      />
+      <h1 className="text-4xl font-bold mb-8 text-center">
+        {currentTierList.name}
+      </h1>
+
+      <DndContext onDragEnd={handleItemDrop}>
+        <TierBoard
+          items={itemsInTiers} // Passa APENAS os itens que JÁ ESTÃO em alguma tier (S, A, B, C, D)
+          // As props foram movidas para handleItemDrop
+          onEdit={handleEditarItem}
+        />
+        <TierForm />
+
+        <UndefinedItemsList
+          items={unclassifiedItems} // Passa os itens com tier "?"
+          onEdit={handleEditarItem}
+          onDelete={handleDeleteItem}
+        />
+        <TierTrash />
+      </DndContext>
     </div>
   );
 }

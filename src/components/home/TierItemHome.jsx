@@ -49,7 +49,7 @@ export default function TierItemHome({ tier, onDelete, onEdit }) {
 
       <div className="flex justify-between mt-2">
         <button
-          className="text-red-600 hover:underline"
+          className="text-yellow-600 hover:underline"
           /*onClick={handleEdit}*/
           onClick={openEditModal}
         >
