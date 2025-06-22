@@ -8,7 +8,15 @@
     {
       "id": "8443eb89-e81b-42a5-a48e-98bdf275da37",
       "name": "Cantoras de K-POP",
-      "type": "ranking"
+      "type": "ranking",
+      "items": [{
+        "id_item": "123",
+        "name_item": "teste de coisa"
+      },
+      {
+        "id_item": "542",
+        "name_item": "teste de outra coisa"
+      }]
     },
     {
       "id": "50304e6d-b422-4411-806f-9100950cc701",
