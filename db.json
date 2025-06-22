@@ -9,7 +9,13 @@
           "id_item": "f16bb1c3-d86a-494c-9db3-9a114be54d6c",
           "name_item": "teste",
           "image_url": "",
-          "tier": "B"
+          "tier": "C"
+        },
+        {
+          "id_item": "92a5aeee-0002-4e8f-9b33-4b89b8e582f9",
+          "name_item": "Teste",
+          "image_url": "",
+          "tier": "?"
         }
       ]
     },

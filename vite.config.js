@@ -8,5 +8,7 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
-
+  server: {
+    hmr: false, // Isso desativa o Hot Module Replacement
+  }
 })
