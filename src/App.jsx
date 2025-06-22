@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import DefaultLayout from "./layout/DefaultLayout";
 import SobrePage from "./pages/SobrePage";
-import TierForm from "./components/TierFormHome";
+import TierForm from "./components/home/TierFormHome";
 import TierList from "./pages/TierListPage";
 
 const router = createBrowserRouter([
