@@ -6,6 +6,7 @@ import TierForm from "./components/home/TierFormHome";
 import TierList from "./pages/TierListPage";
 
 export default function App() {
+
   const router = createBrowserRouter([
     {
       path: "/",

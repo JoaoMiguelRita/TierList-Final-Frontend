@@ -1,67 +1,36 @@
 {
   "tierList": [
     {
-      "id": "8443eb89-e81b-42a5-a48e-98bdf275da37",
-      "name": "Cantoras de K-POP",
-      "type": "ranking",
+      "id": "5d0693ab-c735-44bd-bbc7-0427f8bccab8",
+      "name": "K-Pops",
+      "type": "default",
       "items": [
         {
-          "id_item": "542",
-          "name_item": "Rosé",
-          "tier": "S"
-        },
-        {
-          "name_item": "Josie",
+          "id_item": "f16bb1c3-d86a-494c-9db3-9a114be54d6c",
+          "name_item": "teste",
           "image_url": "",
-          "tier": "A",
-          "id_item": "442aea74-9ddd-4483-a943-6b380340ed78"
-        },
-        {
-          "name_item": "Mary",
-          "image_url": "",
-          "tier": "C",
-          "id_item": "04319fd5-0d02-47bc-8606-890e40eab12a"
-        },
-        {
-          "name_item": "Mario",
-          "image_url": "",
-          "tier": "B",
-          "id_item": "3196f8e4-334b-47ae-92b0-d8b8028e9717"
-        },
-        {
-          "name_item": "Roberta",
-          "image_url": "",
-          "tier": "D",
-          "id_item": "2301eb3c-481d-4cdf-a384-b1d9cd4b7fa1"
-        },
-        {
-          "id_item": "1df52726-73cd-4571-a513-c51ca0967c31",
-          "name_item": "José",
-          "image_url": "",
-          "tier": "?"
-        },
-        {
-          "id_item": "6c8c80c0-6372-4dd0-8554-4a55e2f1c632",
-          "name_item": "Roberto",
-          "image_url": "",
-          "tier": "?"
+          "tier": "B"
         }
       ]
     },
     {
-      "id": "5ff94e56-dd22-4fdd-a03b-c0b2b2c040d7",
-      "name": "Teste 1",
-      "type": "ranking"
-    },
-    {
-      "id": "9765c2e6-83f3-4963-9e59-181a941e9d6b",
-      "name": "Tier",
-      "type": "ranking"
-    },
-    {
-      "id": "9aea6198-ac88-4258-b76a-accafd962606",
-      "name": "Teste 123",
-      "type": "default"
+      "id": "1636c53e-7f6f-4470-9ff5-49760994bf4b",
+      "name": "Guerras Mundiais",
+      "type": "default",
+      "items": [
+        {
+          "id_item": "17647ba1-334b-4ed7-8f0f-0e29e08fe3df",
+          "name_item": "Segunda Guerra",
+          "image_url": "",
+          "tier": "A"
+        },
+        {
+          "id_item": "9eb7fbe5-5249-4c0d-9d3c-959a5a4718e7",
+          "name_item": "Primeira Guerra",
+          "image_url": "",
+          "tier": "A"
+        }
+      ]
     }
   ]
 }
