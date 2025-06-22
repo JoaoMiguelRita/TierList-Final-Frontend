@@ -11,12 +11,12 @@ import TierTrash from "../components/tierList/dnd/TierTrash";
 export default function TierListPage() {
   const { id } = useParams();
   const [currentTierList, setCurrentTierList] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); // Prevenção de erros
+  const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(() => {
     const fetchTierList = async () => {
-      setLoading(true);
+      
       setError(null);
       try {
         const response = await axios.get(
@@ -24,19 +24,39 @@ export default function TierListPage() {
         );
         setCurrentTierList(response.data);
       } catch (err) {
-        console.error("Erro ao carregar a Tier List:", err);
+        console.log("Erro ao carregar a Tier List:", error?.message, error?.response);
         setError(
           "Não foi possível carregar a Tier List. Por favor, tente novamente."
         );
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
 
     if (id) {
       fetchTierList();
     }
   }, [id]);
+
+  // Função para adicionar novo item
+  const handdleAddItem = async (newItem) => {
+    if (!currentTierList) {
+      alert("Não foi possível adicionar o item, a Tier List não está carregada.")
+      return;
+    }
+
+    // Adiciona novo item no array
+    const updatedItems = [...(currentTierList.items || []), newItem];
+ 
+    try {
+      const response = await axios.patch(`http://localhost:3000/tierList/${id}`, {
+        items: updatedItems,
+      });
+      setCurrentTierList(response.data);
+      alert("Item adicionado com sucesso!");
+    } catch (err) {
+      console.log("Erro ao adicionar Item:", error?.message, error?.response);
+      alert("Houve um erro ao adicionar o item. Tente novamente.");
+    } 
+  }
 
   // Função para lidar com o drop de ITENS (seja ele, do table para o board ou para a lixeira, ou até mesmo fora de um campo válido)
   const handleItemDrop = async (event) => {
@@ -70,6 +90,7 @@ export default function TierListPage() {
         item.id_item === draggedItemId ? { ...item, tier: droppedZoneId } : item // Use 'droppedZoneId' como nova tier
     );
 
+    setIsProcessing(true); 
     try {
       await axios.patch(`http://localhost:3000/tierList/${id}`, {
         items: updatedItems,
@@ -81,6 +102,8 @@ export default function TierListPage() {
     } catch (err) {
       console.error("Erro ao atualizar tier do item:", err);
       alert("Erro ao mover item para outro nível.");
+    } finally {
+      setIsProcessing(false); 
     }
   };
 
@@ -91,6 +114,7 @@ export default function TierListPage() {
       item.id_item === id_item ? { ...item, ...newItemData } : item
     );
 
+    setIsProcessing(true); 
     try {
       const response = await axios.patch(
         `http://localhost:3000/tierList/${id}`,
@@ -101,6 +125,8 @@ export default function TierListPage() {
     } catch (err) {
       console.error("Erro ao editar item:", err);
       alert("Houve um erro ao editar o item. Tente novamente.");
+    } finally {
+      setIsProcessing(false); 
     }
   };
 
@@ -112,6 +138,7 @@ export default function TierListPage() {
         (item) => item.id_item !== id_item
       );
 
+      setIsProcessing(true); 
       try {
         await axios.patch(`http://localhost:3000/tierList/${id}`, {
           items: updatedItems,
@@ -124,16 +151,13 @@ export default function TierListPage() {
       } catch (error) {
         console.error("Erro ao deletar Item:", error);
         alert("Houve um erro ao deletar o Item. Tente novamente.");
+      } finally {
+        setIsProcessing(false); 
       }
     }
   };
 
-  // Condições para renderizar a página e prever erros
-  if (loading) {
-    return (
-      <p className="text-center text-white mt-10">Carregando Tier List...</p>
-    );
-  }
+
   if (error) {
     return <p className="text-center text-red-500 mt-10">{error}</p>;
   }
@@ -161,7 +185,9 @@ export default function TierListPage() {
           // As props foram movidas para handleItemDrop
           onEdit={handleEditarItem}
         />
-        <TierForm />
+        <TierForm 
+          onAddItem={handdleAddItem}
+        />
 
         <UndefinedItemsList
           items={unclassifiedItems} // Passa os itens com tier "?"

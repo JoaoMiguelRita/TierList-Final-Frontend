@@ -99,12 +99,6 @@ export default function TierBoard({ items = [], onItemDrop, onEdit }) {
                   />
                 ))}
             </DroppableRow>
-
-            {/* Controles (opcional) */}
-            <div className="flex flex-col gap-2 px-4 py-2 bg-gray-700">
-              <button title="Mover para cima">⬆️</button>
-              <button title="Mover para baixo">⬇️</button>
-            </div>
           </div>
         ))}
       </div>

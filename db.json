@@ -1,46 +1,67 @@
 {
   "tierList": [
     {
-      "id": "68a6ed36-3da5-4c29-a74e-96256dac9972",
-      "name": "Filmes",
-      "type": "default"
-    },
-    {
       "id": "8443eb89-e81b-42a5-a48e-98bdf275da37",
       "name": "Cantoras de K-POP",
       "type": "ranking",
       "items": [
         {
-          "id_item": "123",
-          "name_item": "teste de coisa",
-          "tier": "?"
-        },
-        {
           "id_item": "542",
           "name_item": "Rosé",
           "tier": "S"
+        },
+        {
+          "name_item": "Josie",
+          "image_url": "",
+          "tier": "A",
+          "id_item": "442aea74-9ddd-4483-a943-6b380340ed78"
+        },
+        {
+          "name_item": "Mary",
+          "image_url": "",
+          "tier": "C",
+          "id_item": "04319fd5-0d02-47bc-8606-890e40eab12a"
+        },
+        {
+          "name_item": "Mario",
+          "image_url": "",
+          "tier": "B",
+          "id_item": "3196f8e4-334b-47ae-92b0-d8b8028e9717"
+        },
+        {
+          "name_item": "Roberta",
+          "image_url": "",
+          "tier": "D",
+          "id_item": "2301eb3c-481d-4cdf-a384-b1d9cd4b7fa1"
+        },
+        {
+          "id_item": "1df52726-73cd-4571-a513-c51ca0967c31",
+          "name_item": "José",
+          "image_url": "",
+          "tier": "?"
+        },
+        {
+          "id_item": "6c8c80c0-6372-4dd0-8554-4a55e2f1c632",
+          "name_item": "Roberto",
+          "image_url": "",
+          "tier": "?"
         }
       ]
     },
     {
-      "id": "50304e6d-b422-4411-806f-9100950cc701",
-      "name": "Games",
-      "type": "default"
-    },
-    {
-      "id": "b41fb68b-8df8-448a-bd80-d75037b14227",
-      "name": "Roupas",
-      "type": "default"
-    },
-    {
-      "id": "d7d5ff30-c437-4f45-b1d5-58b9e0fd7536",
-      "name": "Canetas",
-      "type": "default"
-    },
-    {
-      "id": "bb37df17-15a9-4a82-8d90-540d30881c1a",
-      "name": "Cachorros",
+      "id": "5ff94e56-dd22-4fdd-a03b-c0b2b2c040d7",
+      "name": "Teste 1",
       "type": "ranking"
+    },
+    {
+      "id": "9765c2e6-83f3-4963-9e59-181a941e9d6b",
+      "name": "Tier",
+      "type": "ranking"
+    },
+    {
+      "id": "9aea6198-ac88-4258-b76a-accafd962606",
+      "name": "Teste 123",
+      "type": "default"
     }
   ]
 }

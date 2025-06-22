@@ -13,16 +13,17 @@ export default function HomePage() {
             setTierList(response.data)
         }
         )
-    }, [TierListHome]);
+    }, [tierList]);
 
     const handleEditarTier = (id, newTier) => {
         axios.patch(`http://localhost:3000/tierList/${id}`, newTier)
     };
 
     const handleDeleteTier = (id) => {
-        window.confirm("Deseja mesmo deletar esta TierList?")
+        /*window.confirm("Deseja mesmo deletar esta TierList?")
         ? (axios.delete(`http://localhost:3000/tierList/${id}`))
-        : (null)
+        : (null)*/
+        axios.delete(`http://localhost:3000/tierList/${id}`)
     };
 
     return (
