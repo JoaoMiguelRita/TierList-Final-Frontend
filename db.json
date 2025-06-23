@@ -9,13 +9,19 @@
           "id_item": "f16bb1c3-d86a-494c-9db3-9a114be54d6c",
           "name_item": "teste",
           "image_url": "",
-          "tier": "C"
+          "tier": "S"
         },
         {
           "id_item": "92a5aeee-0002-4e8f-9b33-4b89b8e582f9",
-          "name_item": "Teste",
+          "name_item": "Roberto",
           "image_url": "",
           "tier": "?"
+        },
+        {
+          "id_item": "ba52d528-3369-49f2-8e99-834f02d4af06",
+          "name_item": "triste",
+          "image_url": "",
+          "tier": "C"
         }
       ]
     },
@@ -37,6 +43,21 @@
           "tier": "A"
         }
       ]
+    },
+    {
+      "id": "7aaa8605-2903-4ea5-9e9c-b0a864a657cf",
+      "name": "Fã do Raimundos ",
+      "type": "default"
+    },
+    {
+      "id": "4ec2eafd-57a5-4c16-96ce-cbdaf0daf591",
+      "name": "Romeu",
+      "type": "ranking"
+    },
+    {
+      "id": "6468bcda-2567-464e-8edc-f9faf9f16411",
+      "name": "Cactus",
+      "type": "ranking"
     }
   ]
 }

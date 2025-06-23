@@ -1,10 +1,8 @@
-// src/DefaultLayout.jsx
-
 import { Link, Outlet, useLocation } from "react-router-dom";
 
 export default function DefaultLayout() {
   const location = useLocation(); 
-
+  
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col">
       <main className="flex-1 container mx-auto px-5 py-6 flex justify-center items-center">
@@ -30,7 +28,7 @@ export default function DefaultLayout() {
           )}
         </div>
       </footer>
-    </div>  
+    </div> 
   );
 }
 
