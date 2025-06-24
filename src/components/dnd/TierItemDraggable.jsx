@@ -36,18 +36,20 @@ export default function TierItemDraggable({ item, onEdit, onDelete }) {
       ref={setNodeRef}
       {...attributes}
       style={style}
-      className="border p-4 rounded hover:bg-gray-500 shadow-sm bg-gray-600"
+      className="border p-4 rounded shadow-sm bg-gray-600"
     >
-      {/* Apenas essa parte será "arrastável" */}
+      {/* Área arrastável */}
       <div
-        className="cursor-move rounded px-1 text-white font-semibold"
         {...listeners}
+        title="Arraste por aqui"
+        className="cursor-move rounded flex items-center gap-2 bg-gray-700 p-3 text-white font-semibold shadow-inner"
       >
-        {item.name_item}
+        <span className="text-gray-600">☰</span>
+        <span>{item.name_item}</span>
       </div>
 
-      {/* Botões funcionam normalmente agora */}
-      <div className="flex justify-between mt-2">
+      {/* Ações */}
+      <div className="flex justify-between mt-3">
         <button
           className="text-yellow-400 hover:underline"
           onClick={handleEditClick}

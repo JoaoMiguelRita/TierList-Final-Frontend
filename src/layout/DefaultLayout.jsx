@@ -1,10 +1,14 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
+import StatusConnection from "../components/StatusConnection";
 
 export default function DefaultLayout() {
   const location = useLocation(); 
   
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col">
+      <scan>
+        <StatusConnection/>
+      </scan>
       <main className="flex-1 container mx-auto px-5 py-6 flex justify-center items-center">
         <Outlet />
       </main>

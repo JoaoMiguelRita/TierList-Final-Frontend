@@ -3,19 +3,56 @@
     {
       "id": "5d0693ab-c735-44bd-bbc7-0427f8bccab8",
       "name": "K-Pops",
-      "type": "tier",
+      "type": "ranking",
       "items": [
         {
-          "id_item": "9aebe6dc-bcbd-4b8f-b807-e4204fa92bd8",
-          "name_item": "Rosé",
+          "id_item": "906ad7a3-d42a-4ce5-88cd-0f84b1b0ebad",
+          "name_item": "Kin",
           "image_url": "",
-          "tier": "B"
+          "tier": "?",
+          "ordem": 1
         },
         {
           "id_item": "1ce631fd-90c5-4cd2-a0a7-af83e379695e",
           "name_item": "Josie",
           "image_url": "",
-          "tier": "A"
+          "tier": "S",
+          "ordem": 2
+        },
+        {
+          "id_item": "be0e54eb-0b59-48d2-b5a7-9fa519ab9b34",
+          "name_item": "Teste123",
+          "image_url": "",
+          "tier": "?",
+          "ordem": 3
+        },
+        {
+          "id_item": "8a08d87b-947e-49d7-8229-9fdd5aeca482",
+          "name_item": "Mary",
+          "image_url": "",
+          "tier": "S",
+          "ordem": 4
+        },
+        {
+          "id_item": "77c207ab-ef7c-4e5f-919b-b18682896dbf",
+          "name_item": "JK",
+          "image_url": "",
+          "tier": "?",
+          "ordem": 5
+        },
+        {
+          "id_item": "fd3fedfe-ed23-4eb9-85fb-0cdced5c3897",
+          "name_item": "Kond",
+          "image_url": "",
+          "tier": "?",
+          "ordem": 6
+        },
+        {
+          "id_item": "9aebe6dc-bcbd-4b8f-b807-e4204fa92bd8",
+          "name_item": "Rosé",
+          "image_url": "",
+          "tier": "B",
+          "ordem": 7
         }
       ]
     },
@@ -56,11 +93,6 @@
     {
       "id": "7aaa8605-2903-4ea5-9e9c-b0a864a657cf",
       "name": "Fã do Raimundos ",
-      "type": "default"
-    },
-    {
-      "id": "6468bcda-2567-464e-8edc-f9faf9f16411",
-      "name": "Cactus",
       "type": "default"
     }
   ]
