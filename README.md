@@ -165,18 +165,11 @@ PATCH /tierList/abc123
 
 ---
 
-## 📌 Sugestões de melhorias
 
-- Upload de imagens por item  
-- Autenticação e login de usuários  
-- Compartilhamento público de tier lists  
-- Sistema de ranking ou curtidas
+## 🧑‍💻 Autores
 
----
-
-## 🧑‍💻 Autor
-
-Desenvolvido por [João Miguel Rita](https://github.com/JoaoMiguelRita)
+Desenvolvido por [João Miguel Rita](https://github.com/JoaoMiguelRita),
+                 [Gustavo de Freitas Cardoso](https://github.com/gustavofreitas19)
 
 ---
 
