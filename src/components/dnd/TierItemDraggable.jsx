@@ -13,51 +13,49 @@ export default function TierItemDraggable({ item, onEdit, onDelete }) {
 
   const handleEditClick = (e) => {
     e.stopPropagation();
-    e.preventDefault(); 
+    e.preventDefault();
 
     const newName = prompt("Novo nome:", item.name_item);
-    if (newName !== null && newName.trim() !== "") { // Verifica se o usuário não cancelou e o nome não é vazio
+    if (newName !== null && newName.trim() !== "") {
       onEdit(item.id_item, {
         name_item: newName,
       });
     } else if (newName === "") {
-        alert("O nome do item não pode ser vazio.");
+      alert("O nome do item não pode ser vazio.");
     }
   };
 
   const handleDeleteClick = (e) => {
     e.stopPropagation();
     e.preventDefault();
-
     onDelete(item.id_item);
   };
 
   return (
     <div
       ref={setNodeRef}
-      {...listeners} 
-        {...attributes}
+      {...attributes}
       style={style}
-      className="cursor-move border p-4 rounded hover:bg-gray-500 shadow-sm bg-gray-600"
+      className="border p-4 rounded hover:bg-gray-500 shadow-sm bg-gray-600"
     >
-      <div>
-      <p
-        className="cursor-move rounded px-1"
+      {/* Apenas essa parte será "arrastável" */}
+      <div
+        className="cursor-move rounded px-1 text-white font-semibold"
+        {...listeners}
       >
         {item.name_item}
-      </p>
       </div>
-      <div 
-        className="flex justify-between mt-2"
-        >
+
+      {/* Botões funcionam normalmente agora */}
+      <div className="flex justify-between mt-2">
         <button
-          className="text-yellow-600 hover:underline"
+          className="text-yellow-400 hover:underline"
           onClick={handleEditClick}
         >
           Editar
         </button>
         <button
-          className="text-red-600 hover:underline"
+          className="text-red-400 hover:underline"
           onClick={handleDeleteClick}
         >
           Deletar
