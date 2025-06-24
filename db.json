@@ -3,44 +3,53 @@
     {
       "id": "5d0693ab-c735-44bd-bbc7-0427f8bccab8",
       "name": "K-Pops",
-      "type": "default",
+      "type": "tier",
       "items": [
         {
-          "id_item": "f16bb1c3-d86a-494c-9db3-9a114be54d6c",
-          "name_item": "teste",
+          "id_item": "9aebe6dc-bcbd-4b8f-b807-e4204fa92bd8",
+          "name_item": "Rosé",
           "image_url": "",
-          "tier": "S"
+          "tier": "B"
         },
         {
-          "id_item": "92a5aeee-0002-4e8f-9b33-4b89b8e582f9",
-          "name_item": "Roberto",
+          "id_item": "1ce631fd-90c5-4cd2-a0a7-af83e379695e",
+          "name_item": "Josie",
           "image_url": "",
-          "tier": "?"
-        },
-        {
-          "id_item": "ba52d528-3369-49f2-8e99-834f02d4af06",
-          "name_item": "triste",
-          "image_url": "",
-          "tier": "C"
+          "tier": "A"
         }
       ]
     },
     {
       "id": "1636c53e-7f6f-4470-9ff5-49760994bf4b",
       "name": "Guerras Mundiais",
-      "type": "default",
+      "type": "tier",
       "items": [
-        {
-          "id_item": "17647ba1-334b-4ed7-8f0f-0e29e08fe3df",
-          "name_item": "Segunda Guerra",
-          "image_url": "",
-          "tier": "A"
-        },
         {
           "id_item": "9eb7fbe5-5249-4c0d-9d3c-959a5a4718e7",
           "name_item": "Primeira Guerra",
           "image_url": "",
-          "tier": "A"
+          "tier": "S",
+          "ordem": 1
+        },
+        {
+          "id_item": "cc19aa1f-31e1-4f27-941c-a11174c42a5f",
+          "name_item": "Israel",
+          "image_url": "",
+          "tier": "B",
+          "ordem": 2
+        },
+        {
+          "id_item": "17647ba1-334b-4ed7-8f0f-0e29e08fe3df",
+          "name_item": "Segunda Guerra",
+          "image_url": "",
+          "tier": "C",
+          "ordem": 3
+        },
+        {
+          "id_item": "f922ab76-1bcd-4dc9-ba4d-b284c2d9a2e8",
+          "name_item": "Teste 123",
+          "image_url": "",
+          "tier": "?"
         }
       ]
     },
@@ -50,14 +59,9 @@
       "type": "default"
     },
     {
-      "id": "4ec2eafd-57a5-4c16-96ce-cbdaf0daf591",
-      "name": "Romeu",
-      "type": "ranking"
-    },
-    {
       "id": "6468bcda-2567-464e-8edc-f9faf9f16411",
       "name": "Cactus",
-      "type": "ranking"
+      "type": "default"
     }
   ]
 }

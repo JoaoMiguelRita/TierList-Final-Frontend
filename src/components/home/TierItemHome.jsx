@@ -10,11 +10,8 @@ export default function TierItemHome({ tier, onDelete, onEdit }) {
   });
 
   const handleCardClick = () => {
-    if (tier.type === "ranking") {
-      navigate(`/ranking/${tier.id}`);
-    } else {
-      navigate(`/tierList/${tier.id}`);
-    }
+    navigate(`/tierList/${tier.id}`);
+
   };
 
   /*const handleEdit = (e) => {

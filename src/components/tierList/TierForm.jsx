@@ -46,7 +46,6 @@ export default function TierForm({ onAddItem }) {
           />
         </div>
 
-        {/* Campo URL da Imagem */}
         <div className="flex-1">
           <label htmlFor="imageUrl" className="sr-only">URL da Imagem</label>
           <input
@@ -57,10 +56,9 @@ export default function TierForm({ onAddItem }) {
             className="p-2 rounded bg-gray-700 text-white w-full focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
-        
-        {/* Botão Adicionar Item */}
+      
         <button
-          className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded transition-colors flex-shrink-0"
+          className="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2 rounded transition-colors flex-shrink-0"
           type="submit"
         >
           Adicionar Item

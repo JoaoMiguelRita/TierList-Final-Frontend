@@ -1,5 +1,5 @@
 import { useDroppable } from "@dnd-kit/core";
-import TierItemDraggable from "./dnd/TierItemDraggable";
+import TierItemDraggable from "../dnd/TierItemDraggable";
 
 export default function UndefinedItemsList({ items, onEdit, onDelete }) {
   const { setNodeRef, isOver } = useDroppable({ id: "?" }); // ID "?" para itens não classificados
